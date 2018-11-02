@@ -1,6 +1,9 @@
 import pandas as pd
 import numpy as np
 
+movieTitle = input("Enter movie title: ")
+print ("Your movie title is ", movieTitle)
+
 rating_columns = ['user_id', 'movie_id', 'rating']
 ratings = pd.read_csv('u.data', sep='\t', names=rating_columns, usecols=range(3), encoding='ISO-8859-1')
 
@@ -11,7 +14,7 @@ ratings = pd.merge(movies, ratings)
 
 movieRatings = ratings.pivot_table(index=['user_id'],columns=['title'],values='rating')
 
-starWarsRatings = movieRatings['Star Wars (1977)']
+starWarsRatings = movieRatings[movieTitle]
 
 similarMovies = movieRatings.corrwith(starWarsRatings)
 similarMovies = similarMovies.dropna()
