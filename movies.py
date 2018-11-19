@@ -26,4 +26,4 @@ popularMovies = movieStats['rating']['size'] >= 100
 movieStats[popularMovies].sort_values([('rating', 'mean')], ascending=False)[:15]
 
 dataframe = movieStats[popularMovies].join(pd.DataFrame(similarMovies, columns=['similarity']))
-print dataframe.sort_values(['similarity'], ascending=False)[:15]
+print (dataframe.sort_values(['similarity'], ascending=False)[:15])
